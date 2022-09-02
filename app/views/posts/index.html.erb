@@ -1,5 +1,7 @@
 
 <% if user_signed_in? %>
+   <%= link_to "Edit Account", edit_user_registration_path, class: "edit_acc btn btn-primary" %>
+
   <%= turbo_stream_from "posts_list" %>
 
   <div class="mb-12 text-center">

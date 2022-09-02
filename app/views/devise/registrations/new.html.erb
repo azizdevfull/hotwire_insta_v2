@@ -4,6 +4,11 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="my-5">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar%>
+    </div>
+
+    <div class="my-5">
       <%= f.label :username %>
       <%= f.text_field :username, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
     </div>
