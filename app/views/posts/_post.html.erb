@@ -1,7 +1,7 @@
 <div class="instacard bg-white" id="post-<%= post.id %>">
   <div class="instacard-header">
     <span class="instacard-actions">···</span>
-    <div><%= image_tag "logo.png", class: "instacard-profile-image" %></div>
+    <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
     <span class="instacard-profile-name"><%= post.user.username %></span>
   </div>
   <div class="instacard-body p-4 bg-white"><%= post.body %></div>
