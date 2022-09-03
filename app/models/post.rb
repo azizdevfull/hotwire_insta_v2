@@ -13,7 +13,9 @@ class Post < ApplicationRecord
       partial: "posts/post",
       locals: { post: self, user: nil }
   end
-
+  # def likee
+  #   post = likes.user.email
+  # end
   def like!(user)
     likes << Like.new(user: user)
   end
@@ -23,6 +25,12 @@ class Post < ApplicationRecord
   end
 
   def liked?(user)
-    likes.where(user_id: user.id).any?
+    !!self.likes.find{|like| like.user_id==user.id}
+  end
+  def likee(user)
+    likes.where(user: user.email)
+  end
+  def aziz(user)
+    likes.user
   end
 end

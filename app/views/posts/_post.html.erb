@@ -1,10 +1,12 @@
-<div class="instacard bg-white" id="post-<%= post.id %>">
+<div class="instacard bg-white"style="width: 50%;" id="post-<%= post.id %>">
   <div class="instacard-header">
     <span class="instacard-actions">···</span>
     <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
     <span class="instacard-profile-name"><%= post.user.username %></span>
   </div>
-  <div class="instacard-body p-4 bg-white"><%= post.body %></div>
+  <h1><%= time_ago_in_words(post.created_at) %> ago</h1>
+      
+  <div class="instacard-body p-4 bg-white"><%= post.body %> </div>
   <div class="border"><%= image_tag post.file, class: "instacard-image" %></div>
   <div class="grid grid-cols-12 gap-0 justify-items-start grid-flow-col">
     <div id="likes-post-<%= post.id %>"><%= render partial: "likes/like", locals: { post: post, user: user } %></div>
@@ -20,6 +22,7 @@
       <%= render comment %>
     <% end %>
   </div>
+  
   <div class="instacard-comment-form" id="post-comment-form-<%= post.id %>">
     <%= render partial: "comments/new", locals: { post: post, comment: Comment.new } %>
   </div>

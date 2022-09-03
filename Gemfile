@@ -80,3 +80,4 @@ gem "mini_magick", "~> 4.11"
 
 gem "aws-sdk-s3", require: false
 
+gem 'font-awesome-rails'

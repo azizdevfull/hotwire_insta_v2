@@ -5,7 +5,6 @@ class LikesController < ApplicationController
     @post.like!(current_user)
     @post.reload
     @user = current_user
-
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to root_path }
