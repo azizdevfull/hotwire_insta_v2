@@ -9,9 +9,6 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -60,10 +57,18 @@ group :development do
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
+  # Use sqlite3 as the database for Active Record
+  gem "sqlite3", "~> 1.4"
+
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "letter_opener"
   gem "pry-rails", "~> 0.3.9"
+end
+
+group :production do
+gem "pg", "~> 1.4"
+
 end
 
 gem "tailwindcss-rails", "~> 2.0"
@@ -71,4 +76,7 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "devise", "~> 4.8"
 gem "nokogiri"
 
+gem "mini_magick", "~> 4.11"
+
+gem "aws-sdk-s3", require: false
 
