@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     #   sesions: 'users/sessions',
     #   registrations: 'users/registrations'
     # }
+    # resources :users, only: [:index, :show]
+    resources :users, only: [:show]
+
   resources :posts, only: %i[new index create] do
     member do
       post '/likes', to: 'likes#create'
