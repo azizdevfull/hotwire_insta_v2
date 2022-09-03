@@ -10,12 +10,16 @@
   <div class="border"><%= image_tag post.file, class: "instacard-image" %></div>
   <div class="grid grid-cols-12 gap-0 justify-items-start grid-flow-col">
     <div id="likes-post-<%= post.id %>"><%= render partial: "likes/like", locals: { post: post, user: user } %></div>
+    <div id="bookmarks-post-<%= post.id %>"><%= render partial: "bookmarks/bookmark", locals: { post: post, user: user } %></div>
     <div><%= image_tag "comment.png", class: "instacard-comment-icon" %></div>
     <div><%= image_tag "share.png", class: "instacard-share-icon" %></div>
     <div class="col-span-9 justify-self-end"><%= image_tag "save.png", class: "instacard-save-icon" %></div>
   </div>
   <div class="instacard-likes" id="likes-post-count-<%= post.id %>">
     <%= render partial: "posts/likes_count", locals: { count: post.likes.count } %>
+  </div>
+  <div class="instacard-bookmarks" id="bookmarks-post-count-<%= post.id %>">
+    <%= render partial: "posts/bookmarks_count", locals: { count: post.bookmarks.count } %>
   </div>
   <div class="instacard-comments" id="post-comments-<%= post.id %>">
     <% post.comments.order(created_at: :desc).each do |comment| %>

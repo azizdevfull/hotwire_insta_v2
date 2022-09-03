@@ -2,3 +2,8 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@rails/ujs"
+import jQuery from "jquery";
+
+window.$ = window.jQuery = jQuery;
+
+console.log($);

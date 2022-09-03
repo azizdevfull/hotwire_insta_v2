@@ -1,0 +1,12 @@
+
+<% if user && post.bookmarked?(user) %>
+  <%= button_to bookmarks_post_path(post), method: :delete, class: "instacard-like-icon post-unlike" do %>
+    <i class="bi bi-bookmark-fill" style="font-size: 25px;"></i>
+  <% end %>
+
+  
+<% else %>
+  <%= button_to bookmarks_post_path(post), class: "instacard-like-icon post-like" do %>
+    <%= image_tag "save" %>
+  <% end %>
+<% end %>

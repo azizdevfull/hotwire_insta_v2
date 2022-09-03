@@ -1,0 +1,6 @@
+<%= turbo_stream.update "bookmarks-post-#{@post.id}" do %>
+  <%= render partial: "bookmarks/bookmark", locals: { post: @post, user: current_user } %>
+<% end %>
+<%= turbo_stream.update "bookmarks-post-count-#{@post.id}" do %>
+  <%= render partial: "posts/bookmarks_count", locals: { count: @post.bookmarks.count } %>
+<% end %>

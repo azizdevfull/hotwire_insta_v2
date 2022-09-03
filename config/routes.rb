@@ -11,7 +11,11 @@ Rails.application.routes.draw do
     member do
       post '/likes', to: 'likes#create'
       delete '/likes', to: 'likes#destroy'
+      post '/bookmarks', to: 'bookmarks#create'
+      delete '/bookmarks', to: 'bookmarks#destroy'
+
       resources :comments, only: [:create]
+      # resources :bookmarks, only: [:create, :destroy], shallow: true
     end
   end
   root "posts#index"
