@@ -83,7 +83,8 @@
                 </a>                  
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <li>
-                    <a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> My profile</a>
+                    
+                    <%= link_to user_path(current_user.id), class:"dropdown-item" do %><i class="bi bi-person-circle"> My Profile</i><% end %>
                   </li>
                   <li><a class="dropdown-item" href="#"><i class="bi bi-gear-wide"></i> Settings</a></li> <hr>
                   <li>
