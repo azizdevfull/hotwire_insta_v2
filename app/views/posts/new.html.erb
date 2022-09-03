@@ -1,3 +1,4 @@
+<% @post = Post.new %>
 <%= turbo_frame_tag "modal" do %>
   <%= form_for @post, data: { controller: "modal" } do |f| %>
     <div tabindex="-1" aria-hidden="false" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full bg-gray-800/15 backdrop-blur">

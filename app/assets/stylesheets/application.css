@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+ /* *{
+    font-size: 20px;
+ } */
+ .bg-light{
+    align-items: center;
+    background-color: rgb(var(--ig-primary-background));
+    border-bottom: 1px solid rgb(var(--ig-elevated-separator));
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: var(--desktop-nav-height);
+    position: fixed;
+    top: 0;
+    transition: height var(--desktop-nav-anim-duration) ease-in-out;
+    width: 100%;
+    z-index: 3;
+  }
+  

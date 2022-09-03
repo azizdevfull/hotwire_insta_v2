@@ -135,3 +135,26 @@ input:focus {
   0% { background-color: rgba(255,255,153,.8); }
   100% { background-color: rgba(255,255,153,0); }
 }
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 14.5px;
+}
+}
+img{
+  height: -1;
+}
+.bg-light{
+  align-items: center;
+  background-color: rgb(var(--ig-primary-background));
+  border-bottom: 1px solid rgb(var(--ig-elevated-separator));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: var(--desktop-nav-height);
+  position: fixed;
+  top: 0;
+  transition: height var(--desktop-nav-anim-duration) ease-in-out;
+  width: 100%;
+  z-index: 3;
+}

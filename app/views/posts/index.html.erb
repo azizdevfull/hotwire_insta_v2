@@ -1,14 +1,9 @@
 
 <% if user_signed_in? %>
-   <%= link_to "Edit Account", edit_user_registration_path, class: "edit_acc btn btn-primary" %>
-
   <%= turbo_stream_from "posts_list" %>
-
-  <div class="mb-12 text-center">
-    <%= link_to "+", new_post_path, class: "button px-6 py-4 text-4xl hover:bg-gray-300 bg-white hover:text-white text-gray-600 border-2", data: { turbo_frame: "modal" } %>
-  </div>
-
-  <div id="posts">
+ 
+  <div id="posts" style="margin-top: 10px;">
+  <%= link_to "Edit Account", edit_user_registration_path, class: "edit_acc btn btn-primary" %>
     <% @posts.each do |post| %>
       <%= render partial: "posts/post", locals: { post: post, user: current_user } %>
     <% end %>
