@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.order(created_at: :desc).all
+    # @users = User.search(params[:term])
+    # respond_to :js
     # @is_bookmarked = @post.is_bookmarked(current_user)
   end
 

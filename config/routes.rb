@@ -5,8 +5,12 @@ Rails.application.routes.draw do
     #   registrations: 'users/registrations'
     # }
     # resources :users, only: [:index, :show]
-    resources :users, only: [:show]
-
+    resources :users do
+      get :search, on: :collection
+    end
+    resources :profile do
+      get :search, on: :collection
+    end
   resources :posts, only: %i[new index create] do
     member do
       post '/likes', to: 'likes#create'

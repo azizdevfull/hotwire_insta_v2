@@ -1,0 +1,49 @@
+<div class="row justify-content-md-center profile-wrapper">
+  <div class="col-md-4 text-center">
+    <%= image_tag @user.avatar, width: '152', height: '152', class: "round-img" %>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <p class="username"><%= @user.username %></p>
+      <p class="username"><%= simple_format @user.bio %></p>
+      <p class="username"><%= @user.website %></p>
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark", style: "width: 103px;" %>
+      <% end %>
+
+  <div class="profile-tab">
+    <% if @user == current_user %>
+    <nav>
+      <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-posts-tab" data-toggle="tab" href="#nav-posts" role="tab" aria-controls="nav-posts" aria-selected="true">POSTS</a>
+        <a class="nav-item nav-link" id="nav-saved-tab" data-toggle="tab" href="#nav-saved" role="tab" aria-controls="nav-saved" aria-selected="false">SAVED</a>
+      </div>
+    </nav>
+    <% end %>
+    <div class="tab-content pb-3" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab">
+         <div class="row">
+         
+         <% @posts.each do |aziz| %>
+         <% if aziz.user.id == @user.id %>
+              <%= aziz.body %>
+              <%= image_tag aziz.file, class: "instacard-profile-image", style: "width: 25%; height: 25%;" %>
+         <% end %>
+         <% end %>
+
+        <% @bookmarks.each do |bookmark| %>
+        <% if bookmark.user.id == @user.id %>
+        <h1><%= bookmark.post.body %></h1>
+          
+        <% end %>
+         <% end %>
+        </div> 
+      </div>
+      <div class="tab-pane fade" id="nav-saved" role="tabpanel" aria-labelledby="nav-saved-tab">
+        <div class="row">
+          <%# <%= render "post", {posts: @saved} if @user == current_user %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

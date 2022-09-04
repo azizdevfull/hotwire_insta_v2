@@ -1,0 +1,11 @@
+<h1>Users</h1>
+<div class="mb-5">
+  <label for="simple-input" class="form-label">Plain text User usernames</label>
+  <div data-controller="autocomplete" data-autocomplete-url-value="/profile/search">
+    <input name="simple-input" type="text" class="form-control" data-autocomplete-target="input" placeholder="search a user"/>
+    <input type="hidden" name="user_username" data-autocomplete-target="hidden"/>
+    <ul data-autocomplete-target="results" class="list-group"></ul>
+  </div>
+</div>
+
+

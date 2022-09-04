@@ -31,4 +31,20 @@ class User < ApplicationRecord
       content_type: 'image/jpg'
     )
   end
+  def self.search(q)
+  end
+  # scope :filter_by_username, -> (username) { where('username LIKE ?', "%#{username}%") }
+
+  # def self.search(params)
+  #   params[:query].blank? ? all : where(
+  #     "name LIKE ?", "%#{sanitize_sql_like(params[:query])}%"
+  #   )
+  # end
+  # def self.search(term)
+  #   if term
+  #     where('username LIKE ?', "%#{term}%")
+  #   else
+  #     nil
+  #   end
+  # end
 end
