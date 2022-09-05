@@ -4,12 +4,9 @@
   </div>
   <div class="col-md-8">
     <div class="row">
-      <p class="username"><%= @user.username %></p>
-      <p class="username"><%= simple_format @user.bio %></p>
-      <p class="username"><%= @user.website %></p>
-      <% if @user == current_user %>
-        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark", style: "width: 103px;" %>
-      <% end %>
+<main>
+    <%= render "profile/user", user: @user %>
+</main>
 
   <div class="profile-tab">
     <% if @user == current_user %>
