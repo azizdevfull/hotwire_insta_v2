@@ -8,6 +8,7 @@ class ProfileController < ApplicationController
   end
   def search
     @users = User.where("username like ?", "%#{params[:q]}%")
+    render layout: false
   end
 
     def show

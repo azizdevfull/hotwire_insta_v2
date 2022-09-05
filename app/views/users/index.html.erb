@@ -1,3 +1,4 @@
+
 <h1>Users</h1>
 <div class="mb-5">
   <label for="simple-input" class="form-label">Plain text User usernames</label>
@@ -9,3 +10,9 @@
 </div>
 
 
+
+
+  <div data-controller="autocomplete" data-autocomplete-url-value="/users/search">
+    <input type="text" data-autocomplete-target="input" placeholder="Type to search..."/>
+    <ul data-autocomplete-target="results"></ul>
+  </div>

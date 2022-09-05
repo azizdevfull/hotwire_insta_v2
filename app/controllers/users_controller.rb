@@ -3,11 +3,13 @@ class UsersController < ApplicationController
     before_action :set_user, only: %i[ show edit update destroy ]
     def index
       @users = User.all
+      render layout: false
       # @users = User.search(params[:term])
       # respond_to :js
     end
     def search
       @users = User.where("username like ?", "%#{params[:q]}%")
+      render layout: false
     end
     # def search
     #   if params[:username_search].present?
