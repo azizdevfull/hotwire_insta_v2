@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     #   registrations: 'users/registrations'
     # }
     # resources :users, only: [:index, :show]
+    # get 'profile/:username', to: 'profile#show', as: 'profile'
     resources :users do
       get :search, on: :collection
     end
