@@ -4,7 +4,6 @@
     <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
     <span class="instacard-profile-name"><%= post.user.username %></span>
   </div>
-  <p><%= time_ago_in_words(post.created_at) %> ago</p>
       
   <div class="border"><%= image_tag post.file, class: "instacard-image" %></div>
   <div class="grid grid-cols-12 gap-0 justify-items-start grid-flow-col">
@@ -24,6 +23,7 @@
       <%= render comment %>
     <% end %>
   </div>
+  <p style="font-size: 11px;"><%= time_ago_in_words(post.created_at) %> ago</p>
   
   <div class="instacard-comment-form" id="post-comment-form-<%= post.id %>">
     <%= render partial: "comments/new", locals: { post: post, comment: Comment.new } %>
