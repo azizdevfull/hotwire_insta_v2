@@ -1,4 +1,15 @@
+<% if user.id == 3 %>
+<h1><%= user.email %> <i class="bi bi-patch-check aziz"></i></h1>
+  <% else %>
 <h1><%= user.email %></h1>
+
+<% end %>
+<style>
+.aziz{
+color: blue;
+
+}
+</style>
 <br />
 <%= render 'profile/follower_count', user: user %>
 <div><%= user.followees.count %> following</div>
