@@ -5,7 +5,17 @@
     <span class="instacard-profile-name"><%= link_to post.user.username, profile_path(post.user) %></span>
   </div>
       
-  <div class="border"><%= image_tag post.file, class: "instacard-image" %></div>
+  <div class="border">
+    <% if post.file.image? %>
+      <%= image_tag post.file, class: "instacard-image" %>
+      <% elsif post.file.video? %>
+        
+              <%= video_tag url_for(post.file), style: "height: 338px; width: 100%;", controls: true %> 
+        
+    <% end %>
+  
+  
+  </div>
   <div class="grid grid-cols-12 gap-0 justify-items-start grid-flow-col">
     <div id="likes-post-<%= post.id %>"><%= render partial: "likes/like", locals: { post: post, user: user } %></div>    
     <div><%= image_tag "comment.png", class: "instacard-comment-icon" %></div>
