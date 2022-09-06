@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users do
       get :search, on: :collection
     end
+    resources :profile
     get 'profile/:id', to: 'profile#show'
 
     post 'profile/follow', to: 'profile#follow'

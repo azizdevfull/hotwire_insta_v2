@@ -2,7 +2,7 @@
   <div class="instacard-header">
     <span class="instacard-actions">···</span>
     <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
-    <span class="instacard-profile-name"><%= link_to post.user.username, profile_path(user), style: "text-decoration: none;"%></span>
+    <span class="instacard-profile-name"><%= post.user.username %></span>
   </div>
       
   <div class="border"><%= image_tag post.file, class: "instacard-image" %></div>
