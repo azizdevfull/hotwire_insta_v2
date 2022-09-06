@@ -9,15 +9,15 @@ Rails.application.routes.draw do
     resources :users do
       get :search, on: :collection
     end
-    resources :profile
-    get 'profile/:id', to: 'profile#show'
+    # resources :profile
+    # get 'profile/:id', to: 'profile#show'
 
-    post 'profile/follow', to: 'profile#follow'
     delete 'profile/unfollow', to: 'profile#unfollow'
+  
   resources :profile do
       get :search, on: :collection
     end
- 
+    post 'profile/follow', to: 'profile#follow'
   resources :posts, only: %i[new index create] do
     member do
       post '/likes', to: 'likes#create'
