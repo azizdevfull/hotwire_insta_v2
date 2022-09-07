@@ -5,17 +5,17 @@
 
     <div class="my-5">
       <%= f.label :avatar %>
-      <%= f.file_field :avatar%>
+      <%= f.file_field :avatar %>
     </div>
 
     <div class="my-5">
       <%= f.label :username %>
-      <%= f.text_field :username, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
+      <%= f.text_field :username, autofocus: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
     </div>
 
     <div class="my-5">
       <%= f.label :email %>
-      <%= f.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
+      <%= f.email_field :email, autocomplete: "email", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
     </div>
 
     <div class="my-5">
