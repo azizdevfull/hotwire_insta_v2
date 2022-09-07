@@ -6,33 +6,26 @@ class UsersController < ApplicationController
       # @users = User.search(params[:term])
       # respond_to :js
     end
+    def update
+      logger.info "UsersController#update"
+          
+      # Override Devise to use update_attributes instead of update_with_password.
+      # This is the only change we make.
+      if resource.update_attributes(params[resource_name])
+        set_flash_message :notice, :updated
+        # Line below required if using Devise >= 1.2.0
+        sign_in resource_name, resource, :bypass => true
+        redirect_to profile_path
+      else
+        clean_up_passwords(resource)
+        render_with_scope :edit
+      end
+    end
     def search
       @users = User.where("username like ?", "%#{params[:q]}%")
       render layout: false
     end
-    # def search
-    #   if params[:username_search].present?
-    #     @users = User.filter_by_username(params[:username_search])
-    #   else
-    #     @users = []
-    #   end
-    #   respond_to do |format|
-    #     format.turbo_stream do
-    #       # render turbo_stream: turbo_stream.update("search_results", Time.zone.now)
-    #       # render turbo_stream: turbo_stream.update("search_results", @movies.count)
-    #       render turbo_stream: turbo_stream.update("search_results",
-    #                               partial: "users/search_results", locals: { users: @users })
-    #     end
-    #   end
-    # end
-  
-    # def show
-    #   @user = User.find(params[:id])
-    #   set_meta_tags title: @user.name
-    #   @posts = @user.posts.includes(:photos, :likes, :comments)
-    #   @saved = Post.joins(:bookmarks).where("bookmarks.user_id=?", current_user.id).
-    #     includes(:photos, :likes, :comments) if @user == current_user
-    # end
+
     def show
       @users = User.all
       @posts = Post.all
@@ -44,16 +37,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
        @posts = Post.all
        @bookmarks = Bookmark.all
-    #   respond_to :js
     end
-  
-    # def show
-    #   @user = User.find(params[:id])
-    #   set_meta_tags title: @user.name
-    #   @posts = @user.posts.includes(:photos, :likes, :comments)
-    #   @saved = Post.joins(:bookmarks).where("bookmarks.user_id=?", current_user.id).
-    #     includes(:photos, :likes, :comments) if @user == current_user
-    # end
+
     private
     def set_user
       @user = User.friendly.find(params[:id])

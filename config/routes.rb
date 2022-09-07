@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-    devise_for :users
-    # , controllers: {
-    #   sesions: 'users/sessions',
-    #   registrations: 'users/registrations'
-    # }
-    # resources :users, only: [:index, :show]
-    # get 'profile/:username', to: 'profile#show', as: 'profile'
+  devise_for :users,
+  controllers: {registrations: 'registrations'}
     resources :users do
       get :search, on: :collection
     end
