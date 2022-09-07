@@ -5,8 +5,10 @@
   <div class="col-md-8">
     <div class="row">
       <p class="username"><%= @user.username %>
-      <button class="btn btn-outline-dark common-btn edit-profile-btn" >Edit Profile</button>
-      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal">a</button>
+      
+      <% if @user == current_user %>      
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn"%>
+      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-gear-wide"></i></button>
     
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -24,6 +26,8 @@
           </div>
         </div>
       </div>
+      <% end %>
+
       </p>
     </div>
     <div class="row">
@@ -62,11 +66,14 @@
   font-weight: bold;
 }
 .setting {
-  margin: 7px 0 0 10px;
+  /* margin: 7px 0 0 10px; */
   background-color: transparent;
   background-position: -125px -355px;
   height: 24px;
   width: 24px;
   border: none;
+}
+.setting:hover {
+  cursor: pointer;
 }
 </style>
