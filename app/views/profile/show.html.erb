@@ -4,10 +4,10 @@
   </div>
   <div class="col-md-8">
     <div class="row">
-      <p class="username"><%= @user.username %></p>
-      <button class="btn btn-outline-dark common-btn edit-profile-btn">Edit Profile</button>
-      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
-      <!-- Modal -->
+      <p class="username"><%= @user.username %>
+      <button class="btn btn-outline-dark common-btn edit-profile-btn" >Edit Profile</button>
+      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal">a</button>
+    
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -18,16 +18,55 @@
               <div class="list-group text-center">
               <a href="" class="list-group-item list-group-item-action">Change Password</a>
               <%= button_to "Sign out", destroy_user_session_path, method: :get, 
-              class: "dropdown-item" %>
+              class: "list-group-item list-group-item-action" %>
+              <a href="" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
               </div>
           </div>
         </div>
       </div>
+      </p>
     </div>
     <div class="row">
-      <p class="email">
-        <%= @user.email %>
-      </p>
+      <p class="email"><%= @user.email %></p>
     </div>
   </div>
 </div>
+
+<style>
+.profile-wrapper {
+  /* padding: 60px 0;
+  border-bottom: 1px solid #efefef; */
+
+  .username {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 200;
+  }
+    .email {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+.round-img {
+  border-radius: 50%;
+}
+.common-btn {
+  height: 28px;
+  line-height: 24px;
+  padding: 0 24px;
+  border-color: #dbdbdb;
+  font-size: 14px;
+}
+.edit-profile-btn {
+  margin: 5px 0 0 15px;
+  font-weight: bold;
+}
+.setting {
+  margin: 7px 0 0 10px;
+  background-color: transparent;
+  background-position: -125px -355px;
+  height: 24px;
+  width: 24px;
+  border: none;
+}
+</style>
