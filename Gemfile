@@ -82,3 +82,5 @@ gem "aws-sdk-s3", require: false
 
 gem 'font-awesome-rails'
 gem "friendly_id", "~> 5.4"
+
+gem "sassc", "~> 2.4"
