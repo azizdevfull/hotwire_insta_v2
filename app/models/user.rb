@@ -30,7 +30,11 @@ class User < ApplicationRecord
             where(conditions.to_h).first
           end
         end 
-        
+        validates :username,
+  :presence => true,
+  :uniqueness => {
+    :case_sensitive => false
+  }
         def validate_username
           if User.where(email: username).exists?
             errors.add(:username, :invalid)
