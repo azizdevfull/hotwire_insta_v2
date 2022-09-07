@@ -139,6 +139,7 @@ input:focus {
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 14.5px;
+    /* margin-top: -50px; */
 }
 }
 img{
@@ -158,3 +159,19 @@ img{
   width: 100%;
   z-index: 3;
 }
+/* .row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-top: calc(var(--bs-gutter-y) * -1); */
+  /* margin-right: calc(var(--bs-gutter-x) * -.5); */
+  /* margin-left: calc(var(--bs-gutter-x) * -.5); */
+  /* margin-top: -50px; */
+/* } */
+/* .navbar-expand-lg .navbar-collapse {
+  display: flex!important;
+  flex-basis: auto;
+  margin-top: -50px;
+
+} */

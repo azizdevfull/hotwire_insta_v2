@@ -1,9 +1,12 @@
-<% if user.id == 3 %>
-<h1><%= user.email %> <i class="bi bi-patch-check aziz"></i></h1>
-  <% else %>
-<h1><%= user.email %></h1>
+<h4 ><%= user.username %> 
 
+<% if user == current_user %>
+ <%= link_to "Edit Profile", edit_user_registration_path, style:"background-color: transparent; border: 1pxsolidrgb(var(--ig-stroke)); color: rgb(var(--ig-secondary-button)); text-decoration: none;" %></h4>
+<% elsif current_user %>
+    <%= render 'profile/follow_button', user: user %>
 <% end %>
+
+
 <style>
 .aziz{
 color: blue;
@@ -14,8 +17,3 @@ color: blue;
 <%= render 'profile/follower_count', user: user %>
 <div><%= user.followees.count %> following</div>
 
-<% if user == current_user %>
-    <%= link_to "Edit Profile", edit_user_registration_path %>
-<% elsif current_user %>
-    <%= render 'profile/follow_button', user: user %>
-<% end %>

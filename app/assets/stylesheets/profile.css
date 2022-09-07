@@ -1,0 +1,465 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+i.material-icons {
+  font-size: 29px;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #3c3c3c;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+body.on-focus {
+  overflow: hidden;
+}
+body.on-focus .pic-on-focus-container {
+  visibility: visible;
+}
+
+header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background-color: white;
+}
+header .header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 20px;
+}
+header .header-container .insta-logo {
+  font-family: "Lobster Two", cursive;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+header .header-container .nav-container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+header .header-container .nav-container-header .profile-picture {
+  background-image: url(https://source.unsplash.com/zAjdgNXsMeg/1600x900);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  width: 24px;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+header .header-container .nav-container-header .profile-picture::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid black;
+  border-radius: 50%;
+  transform: scale(1.2);
+}
+
+.container {
+  margin-top: 50px;
+}
+.container .user-info {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: repeat(3, 1f);
+  grid-template-areas: "profile-pic username-and-follow" "bio bio" "stats stats";
+}
+.container .user-info .profile-picture-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  grid-area: profile-pic;
+}
+.container .user-info .profile-picture-container .profile-picture {
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+.container .user-info .profile-picture-container .profile-picture::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://source.unsplash.com/zAjdgNXsMeg/1600x900);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  transform: scale(0.7);
+  border: 5px solid white;
+  z-index: -1;
+}
+.container .user-info .profile-picture-container .profile-picture::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(to right top, #feda75, #fa7e1e, #d62976, #962fbf);
+  transform: scale(0.75);
+  z-index: -2;
+}
+.container .user-info .username-and-follow {
+  grid-area: username-and-follow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 10px;
+  padding-left: 20px;
+}
+.container .user-info .username-and-follow .user-name {
+  font-size: 1.8rem;
+  font-weight: 100;
+}
+.container .user-info .username-and-follow .follow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+}
+.container .user-info .username-and-follow .follow .follow-btn {
+  height: 100%;
+  width: 200px;
+  font-weight: 500;
+  border-radius: 3px;
+  background-color: #0084ff;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.container .user-info .username-and-follow .follow .suggestion-btn {
+  border-radius: 3px;
+  background-color: #0084ff;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 35px;
+}
+.container .user-info .username-and-follow .follow .suggestion-btn .material-icons {
+  font-size: 20px;
+}
+.container .user-info .bio {
+  grid-area: bio;
+  padding-left: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.container .user-info .bio .bio-name {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+.container .user-info .bio .followed-by {
+  font-size: 0.7em;
+  font-weight: 600;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #787878;
+}
+.container .user-info .bio .followed-by span {
+  color: #3c3c3c;
+}
+.container .user-info .stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 0.9rem;
+  padding: 10px 0;
+}
+.container .user-info .stats > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container .user-info .stats > div > div:first-child {
+  font-weight: 600;
+}
+.container .user-info .stats > div > div:last-child {
+  color: #787878;
+}
+.container .content {
+  font-size: 1rem;
+}
+.container .content .nav-container-content {
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.container .content .nav-container-content > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: #787878;
+}
+.container .content .nav-container-content > div div {
+  display: none;
+}
+.container .content .content-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.container .content .content-container .pic-container {
+  position: relative;
+}
+.container .content .content-container .pic-container .pic {
+  aspect-ratio: 1/1;
+  background-position: center;
+  background-size: cover;
+}
+.container .content .content-container .pic-container .pic-stats {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+}
+.container .content .content-container .pic-container .pic-stats > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.container .content .content-container .pic-container:hover {
+  cursor: pointer;
+}
+.container .content .content-container .pic-container:hover .pic-stats {
+  visibility: visible;
+}
+.container footer {
+  font-size: 0.8rem;
+  color: #787878;
+  padding: 50px;
+}
+.container footer .nav-container-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 24px;
+}
+.container footer .trademark {
+  padding: 16px 0;
+  text-align: center;
+}
+
+.pic-on-focus-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+.pic-on-focus-container .pic-on-focus {
+  width: 80%;
+  height: 80%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pic-on-focus-container .pic-on-focus .material-icons {
+  color: white;
+  font-size: 80px;
+  opacity: 0;
+}
+.pic-on-focus-container .pic-on-focus .material-icons:hover {
+  cursor: default;
+}
+.pic-on-focus-container .pic-on-focus .material-icons.liked {
+  animation: heartPopUp 1s;
+}
+.pic-on-focus-container .close-btn,
+.pic-on-focus-container .previous-btn,
+.pic-on-focus-container .forward-btn {
+  position: absolute;
+  color: #787878;
+}
+.pic-on-focus-container .close-btn:hover,
+.pic-on-focus-container .previous-btn:hover,
+.pic-on-focus-container .forward-btn:hover {
+  cursor: pointer;
+  color: white;
+}
+.pic-on-focus-container .close-btn {
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.pic-on-focus-container .previous-btn {
+  top: 50%;
+  left: 10px;
+}
+.pic-on-focus-container .forward-btn {
+  top: 50%;
+  right: 10px;
+}
+
+@media (min-width: 730px) {
+  .header-container {
+    max-width: 950px;
+  }
+
+  .container {
+    width: 950px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .container .user-info {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(3, fit-content);
+    grid-template-areas: "profile-pic username-and-follow" "profile-pic stats" "profile-pic bio";
+  }
+  .container .user-info .profile-picture-container .profile-picture {
+    width: 200px;
+  }
+  .container .user-info .username-and-follow {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+    column-gap: 20px;
+  }
+  .container .user-info .username-and-follow .follow .follow-btn {
+    width: 100px;
+  }
+  .container .user-info .stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 50px;
+    font-size: 1rem;
+  }
+  .container .user-info .stats > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .container .user-info .bio {
+    border: none;
+  }
+  .container .content .nav-container-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .container .content .nav-container-content > div {
+    width: 100px;
+  }
+  .container .content .nav-container-content > div .material-icons {
+    font-size: 18px;
+  }
+  .container .content .nav-container-content > div div {
+    display: initial;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+  .container .content .content-container {
+    gap: 25px;
+  }
+  .container .content .content-container .pic-container .pic-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@keyframes heartPopUp {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+} */
