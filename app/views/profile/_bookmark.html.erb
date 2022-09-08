@@ -1,7 +1,7 @@
            <% bookmarks.each do |bookmark| %>
         <% if bookmark.user.id == @user.id %>
         <div class="col-4">
-        <%= link_to posts_path(bookmark) do %>
+        <%= link_to post_path(bookmark) do %>
   <div class="post-stat d-flex justify-content-center align-items-center">
   <span>
   <i class="bi bi-suit-heart" arial-hidden="true"></i>
