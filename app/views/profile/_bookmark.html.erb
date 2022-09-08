@@ -1,0 +1,17 @@
+           <% bookmarks.each do |bookmark| %>
+        <% if bookmark.user.id == @user.id %>
+        <%= link_to posts_path(bookmark) do %>
+    <div class="col-4">
+  <div class="post-stat d-flex justify-content-center align-items-center">
+  <span>
+  <i class="bi bi-suit-heart" arial-hidden="true"></i>
+  <%= bookmark.post.likes.size %>
+  <i class="bi bi-chat" arial-hidden="true"></i>
+  <%= bookmark.post.comments.size %>
+  </span>
+  </div>
+  
+  <%= image_tag bookmark.post.file, class: "card-img-top image-preview" %>   
+        <% end %>
+         <% end %>
+         <% end %>

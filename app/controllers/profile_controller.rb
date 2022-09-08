@@ -15,8 +15,17 @@ class ProfileController < ApplicationController
 
     def show
       @users = User.all
-      @posts = Post.all
+      # set_meta_tags title: @user.username
+
+      # @posts = Post.all
+      @user = User.friendly.find(params[:id])
+      @posts = @user.posts.includes(:likes, :comments)
+      # @posts = Post.all
       @bookmarks = Bookmark.all
+      @saved = Post.joins(:bookmarks).where(user_id: current_user.id).includes(:likes, :comments) if @user == current_user
+      # @users = User.all
+      # @posts = Post.all
+      # @bookmarks = Bookmark.all
     end
 
   def follow
