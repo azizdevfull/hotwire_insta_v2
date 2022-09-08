@@ -1,1 +1,74 @@
-<%= @post.body %>
+<div class="d-flex flex-column align-items-center mt-3">
+  <div class="row post box col-xl-10 col-lg-11 col-xs-12">
+    <div class="col-lg-8 col-md-7 px-0 d-flex post-show-img">
+      <div class="align-self-center">
+  <% if @post.file.image? %> 
+      <%= image_tag @post.file, class: "instacard-image" %>
+      <% elsif @post.file.video? %>
+              <%= video_tag url_for(@post.file), style: "height: 338px; width: 100%;", controls: true %>
+        
+    <% end %>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-5 mt-sm-4 mt-md-0">
+      <div class="row px-3 d-flex align-items-center">
+        <%= link_to profile_path(@post.user), class: "no-text-decoration", style: "    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);" do %>
+    <%= image_tag @post.user.avatar, class: "instacard-profile-image post-author-icon"if @post.user.avatar.attached? %>
+        <% end %>
+         <%= link_to profile_path(@post.user), class: "normal-color no-text-decoration d-flex align-self-center", style: "width: 101%;",
+          title: @post.user.username do %>
+          <strong><%= @post.user.username %></strong>
+        <% end %>
+ <% if @post.is_belongs_to? current_user %>
+           <%= link_to  post_path(@post), 'data-turbo-method': :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %>
+            <i class="bi bi-trash3"></i>
+          <% end %>
+        <% end %>
+        </div>
+          <div class="instacard-body p-4 bg-white">
+  
+    <% if @post.body.length > 50 %>
+      <div class='textControl'><%= truncate(@post.body, length: 50) %></div>
+      <div class='textControl' style='display:none;'><%= simple_format @post.body %></div>
+      <%= link_to '...Read more', '', class: "read-more-#{@post.id} textControl" %>
+
+      <script>
+        $('.read-more-<%= @post.id %>').on('click', function(e) {
+          e.preventDefault();
+          $('.textControl').toggle();
+        })
+      </script>
+    <% else %>
+      <%= simple_format @post.body %>
+    <% end %>
+  
+   </div>
+         <hr class="mb-0">
+      <div class="comment-list py-2">
+        <div class="instacard-comments" id="post-comments-<%=  @post.id %>">
+    <%  @post.comments.order(created_at: :desc).each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  </div>
+  <hr class="mt-0">
+  <div class="row actions">
+   <div class="grid grid-cols-12 gap-0 justify-items-start grid-flow-col">
+    <div id="likes-post-<%= @post.id %>"><%= render partial: "likes/like", locals: { post: @post, user: @user } %></div>    
+    <div class="col-span-9 justify-self-end"><div id="bookmarks-post-<%= @post.id %>"><%= render partial: "bookmarks/bookmark", locals: { post: @post, user: @user } %></div></div>
+  </div>
+  <div class="instacard-likes" id="likes-post-count-<%= @post.id %>">
+    <%= render partial: "posts/likes_count", locals: { count: @post.likes.count } %>
+  </div>
+  <p style="font-size: 11px; margin-left: 10px;"><%= time_ago_in_words(@post.created_at) %> ago</p>
+
+  <div class="instacard-comment-form" id="post-comment-form-<%= @post.id %>">
+    <%= render partial: "comments/new", locals: { post: @post, comment: Comment.new } %>
+  </div>
+
+

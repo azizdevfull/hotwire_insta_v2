@@ -11,10 +11,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 def show
-  @post = Post.find_by id: params[:id]
-  set_meta_tags title: "Photo by "+@post.user.username
+  # @post = Post.find(params[:id])
 
- 
+  #   return if @post
+  #   flash[:danger] = "Post not exist!"
+  #   redirect_to root_path
 end
 
   def create
@@ -26,16 +27,21 @@ end
       format.html { redirect_to root_path }
     end
   end
+
   def destroy
-    @post = Post.find(params[:id])
       @post.destroy
-  
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: "Project was successfully destroyed." }
-        format.json { head :no_content }
-      end
+    if @post.destroy
+      redirect_to root_path
     end
+        
+      
+      return if @post
+      flash[:danger] = "Post not exist!"
+      redirect_to root_path
+    
+end
   private
+
   def find_post
     @post = Post.find_by id: params[:id]
 

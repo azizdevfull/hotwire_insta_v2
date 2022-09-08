@@ -4,7 +4,9 @@
  
   <div id="posts" style="margin-top: 10px;">
     <% @posts.each do |post| %>
+      
       <%= render partial: "posts/post", locals: { post: post, user: current_user } %>
+  
     <% end %>
   </div>
 <% else %>

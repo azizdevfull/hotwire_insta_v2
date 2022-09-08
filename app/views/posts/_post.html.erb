@@ -1,9 +1,11 @@
 <div class="instacard bg-white"style="width: 35%; border-radius: 8px; margin-left: 340px;" id="post-<%= post.id %>">
   <div class="instacard-header">
     <%# <span class="instacard-actions">···</span> %>
-           <button type="button" class="core-sprite setting instacard-actions" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-gear-wide"></i></button>
     
-  
+             <%= link_to "Show", post, class: "instacard-actions" %>
+        
+            
+              
     <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
     <span class="instacard-profile-name"><%= link_to post.user.username, profile_path(post.user) %></span>
   </div>
@@ -63,20 +65,3 @@
 
 
 </style>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Settings</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-              <div class="list-group text-center">
-              <a href="" class="list-group-item list-group-item-action">Change Password</a>
-             <%= link_to "Delete", post_path(post), 'data-turbo-method': :delete, class: "list-group-item list-group-item-action" %>
-
-              <a href="" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
-              </div>
-          </div>
-        </div>
-      </div> 

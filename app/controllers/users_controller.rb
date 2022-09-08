@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     def show
       @users = User.all
-      @posts = @user.posts.includes(:file, :likes, :comments)
+      @posts = @user.posts.includes(:likes, :comments)
       # @posts = Post.all
       @bookmarks = Bookmark.all
       @saved = Post.joins(:bookmarks).where(user_id: current_user.id).
