@@ -1,35 +1,80 @@
-<section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-  <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag "signup" %>
+  <link href="https://fonts.googleapis.com/css2?family=Amita&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+  <title>Sign up &bull; Instagram</title>
+</head>
 
-    <div class="my-5">
-      <%= f.label :avatar %>
-      <%= f.file_field :avatar %>
-    </div>
+<body>
+  <div id="SignupContainer">
+    <div class="signupBox">
+      <header>
+        <h2>Instagram</h2>
+        <p>Sign up to see photos and videos from your friends.</p>
+        <button><i class="fab fa-facebook"></i>Log in with Facebook</button>
+      </header>
+      <div class="seperator">
+        <hr>OR<hr>
+      </div>
+  <div class="actions">
+    
+  </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-    <div class="my-5">
-      <%= f.label :username %>
-      <%= f.text_field :username, autofocus: true, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
+      <form action="#">
+      <%= f.text_field :username, autofocus: true, placeholder: "Username"%>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email" %>        
+      <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation" %>
+      <%= f.submit "Sign up", data: {turbo: false}%>
+      </form>
+<% end %>
+      <footer>
+        <p>
+          By signing up, you agree to our <a href="#">Terms , Data Policy</a> and <a href="#">Cookies Policy</a> .
+        </p>
+      </footer>
     </div>
+  </div>
+  <div id="BottomContainer">
+    <p>
+      Have an account? <%= link_to "Login", new_user_session_path %>
+    </p>
+  </div>
+  <div id="AppsContainer">
+    <p>Get the app.</p>
+    <img src="https://i.postimg.cc/Vkm7D9Xd/appstore.png" alt="appstore">
+    <img src="https://i.postimg.cc/R00gzMsm/playstore.png" alt="playstore">
+  </div>
+  <div id="LastContainer">
+    <div class="links">
+      <a href="#">ABOUT</a>
+      <a href="#">HELP</a>
+      <a href="#">PRESS</a>
+      <a href="#">API</a>
+      <a href="#">JOBS</a>
+      <a href="#">PRIVACY</a>
+      <a href="#">TERMS</a>
+      <a href="#">LOCATIONS</a>
+      <a href="#">TOP ACCOUNTS</a>
+      <a href="#">HASH TAGS</a>
+      <a href="#">LANGUAGE</a>
+    </div>
+    <div class="copyright">
+      <p>&copy; <%= Time.current.year %> INSTAGRAM </p>
+    </div>
+  </div>
+</body>
 
-    <div class="my-5">
-      <%= f.label :email %>
-      <%= f.email_field :email, autocomplete: "email", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
-    </div>
+</html>
 
-    <div class="my-5">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
-    </div>
 
-    <div class="my-5">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"  %>
-    </div>
 
-    <div class="flex justify-end mt-6">
-      <%= f.submit "Sign up", class: "px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"  %>
-    </div>
-  <% end %>
-</section>
+
+
+
+
+
+
