@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :destroy]
   def index
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      end
     @posts = Post.order(created_at: :desc).all
     # @users = User.search(params[:term])
     # respond_to :js

@@ -8,8 +8,7 @@
       
       <% if @user == current_user %>      
       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark common-btn edit-profile-btn"%>
-      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-gear-wide"></i></button>
-    
+      <button type="button" class="core-sprite setting" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-gear-wide"></i></button></p>
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -18,7 +17,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
               <div class="list-group text-center">
-              <a href="" class="list-group-item list-group-item-action">Change Password</a>
+              <%= link_to "Change Password", edit_user_registration_path, class: "list-group-item list-group-item-action" %>
               <%= button_to "Sign out", destroy_user_session_path, method: :get, 
               class: "list-group-item list-group-item-action" %>
               <a href="" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
@@ -26,12 +25,17 @@
           </div>
         </div>
       </div>
+      <% elsif @user != current_user %>
+      <%= render "profile/user", user: @user %>
       <% end %>
-
+ 
       </p>
     </div>
     <div class="row">
-      <p class="email"><%= @user.email %></p>
+      <p class="email"><%= @user.username %></p>
+      <p class="email"><%= simple_format @user.bio %></p>
+      <p class="email"><%= @user.website %></p>
+
     </div>
   </div>
 
