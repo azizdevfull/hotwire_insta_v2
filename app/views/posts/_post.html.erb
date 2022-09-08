@@ -1,4 +1,4 @@
-<div class="instacard bg-white"style="width: 38%; border-radius: 8px;" id="post-<%= post.id %>">
+<div class="instacard bg-white"style="width: 35%; border-radius: 8px; margin-left: 340px;" id="post-<%= post.id %>">
   <div class="instacard-header">
     <span class="instacard-actions">···</span>
     <div><%= image_tag post.user.avatar, class: "instacard-profile-image"  if post.user.avatar.attached? %></div>
@@ -6,11 +6,11 @@
   </div>
       
   <div class="border">
-    <% if post.file.image? %>
-      <%= image_tag post.file, class: "instacard-image" %>
+    <% if post.file.image? %> <a href="">
+      <%= image_tag post.file, class: "instacard-image" %></a>
       <% elsif post.file.video? %>
-        
-              <%= video_tag url_for(post.file), style: "height: 338px; width: 100%;", controls: true %> 
+        <a href="">
+              <%= video_tag url_for(post.file), style: "height: 338px; width: 100%;", controls: true %></a> 
         
     <% end %>
   
