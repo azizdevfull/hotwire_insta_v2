@@ -13,7 +13,8 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
     post 'profile/follow', to: 'profile#follow'
-  resources :posts, only: %i[new index create] do
+    # resources :posts, only: [:index, :show, :create, :destroy] do
+    resources :posts do
     member do
       post '/likes', to: 'likes#create'
       delete '/likes', to: 'likes#destroy'

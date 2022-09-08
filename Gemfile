@@ -84,3 +84,5 @@ gem 'font-awesome-rails'
 gem "friendly_id", "~> 5.4"
 
 gem "sassc", "~> 2.4"
+
+gem "meta-tags", "~> 2.17"

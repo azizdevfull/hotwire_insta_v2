@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   extend FriendlyId
    friendly_id :username, use: :slugged 
-   has_many :posts
-   has_many :comments
-   has_many :likes
-   has_many :bookmarks
+   has_many :posts, dependent: :destroy
+   has_many :comments, dependent: :destroy
+   has_many :likes, dependent: :destroy
+   has_many :bookmarks, dependent: :destroy
    has_one_attached :avatar
 
    def should_generate_new_friendly_id?

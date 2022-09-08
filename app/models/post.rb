@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   has_one_attached :file
-  has_many :likes
-  has_many :comments
-  has_many :bookmarks
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   belongs_to :user
 
   validates :body, presence: true
@@ -17,7 +17,9 @@ class Post < ApplicationRecord
   # def likee
   #   post = likes.user.email
   # end
-
+  def is_belongs_to? user
+    Post.find_by(user_id: user.id, id: id)
+  end
   def like!(user)
     likes << Like.new(user: user)
   end
