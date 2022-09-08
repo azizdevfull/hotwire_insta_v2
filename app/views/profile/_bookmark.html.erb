@@ -12,7 +12,7 @@
   </div>
   
   <% if bookmark.post.file.video? %>
-   <%= video_tag url_for(post.file), style: "height: 338px; width: 100%;", controls: true %></a> 
+   <%= video_tag url_for(bookmark.post.file), style: "height: 338px; width: 100%;", controls: true %></a> 
    <% elsif bookmark.post.file.image? %>
   <%= image_tag bookmark.post.file, class: "card-img-top image-preview" %>   
   <% end %>
