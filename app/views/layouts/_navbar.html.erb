@@ -90,19 +90,9 @@
                     loading="lazy" />
                 </a> %>
                 <div>
-                  <a type="button" class="nav-link " data-bs-toggle="dropdown" aria-expanded="false">
+                      <%= link_to profile_path(current_user.username), class:"nav-link ", type:"button" do %>
                     <%= image_tag current_user.avatar, class: "rounded-circle", style: "height: 22px; width: 24px;"  if current_user.avatar.attached? %>
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li>
-                      <%= link_to profile_path(current_user.username), class:"dropdown-item" do %><i class="bi bi-person-circle"> My Profile</i><% end %>
-                    </li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear-wide"></i> Settings</a></li>
-                    <hr>
-                    <li>
-                      <%= button_to "Sign out", destroy_user_session_path, method: :get, class: "dropdown-item" %>
-                    </li>
-                  </ul>
+                  <% end %>
                 </div>
                 <%# <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">New Post</a> %>
                 <%= render 'posts/new' %>

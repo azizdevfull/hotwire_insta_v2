@@ -80,9 +80,9 @@ has_many :followers, through: :following_users, dependent: :destroy
     return if avatar.attached?
 
     avatar.attach(
-      io: File.open(Rails.root.join('app', 'assets', 'images', 'car1.jpg')),
-      filename: 'car1.jpg',
-      content_type: 'image/jpg'
+      io: File.open(Rails.root.join('app', 'assets', 'images', 'ava.png')),
+      filename: 'ava.png',
+      content_type: 'image/png'
     )
   end
   def self.search(q)

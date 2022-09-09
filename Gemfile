@@ -86,3 +86,5 @@ gem "friendly_id", "~> 5.4"
 gem "sassc", "~> 2.4"
 
 gem "meta-tags", "~> 2.17"
+
+gem "toastr-rails", "~> 1.0"
