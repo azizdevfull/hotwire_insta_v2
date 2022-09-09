@@ -16,6 +16,10 @@
  /* *{
     font-size: 20px;
  } */
+ .round-img {
+   border-radius: 50%;
+   height: 138px;
+}
  .bg-light{
     align-items: center;
     background-color: rgb(var(--ig-primary-background));
