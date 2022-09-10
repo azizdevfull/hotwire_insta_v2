@@ -17,6 +17,8 @@ color: blue;
 </style>
 <br />
 <p>
+ <%= pluralize(@user.posts.count, "post") %>
+
 <%= render 'profile/follower_count', user: user %>
 <%= user.followees.count %> following</p>
 

@@ -26,8 +26,10 @@
         </div>
       </div>
       <p>
+ <%= pluralize(@user.posts.count, "post") %>
  <%= render 'profile/follower_count', user: @user %>
-<%= @user.followees.count %> following</p>
+<%= @user.followees.count %> following
+</p>
       <% elsif @user != current_user %>
       <%= render "profile/user", user: @user %>
       <% end %>
