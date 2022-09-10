@@ -77,6 +77,11 @@
 
 
 
+
+
+
+<div class="profile-nav" type="button" onclick="menuToggle();">
+                    <%= image_tag current_user.avatar, class: "rounded-circle", style: "height: 22px; width: 24px; margin-top: 6px;"  if current_user.avatar.attached? %>
 <div class="action-nav">
   <div class="menu_nav">
 	<ul class="ul-nav">
@@ -100,11 +105,8 @@
 	toggleMenu.classList.toggle("active");
   }
 </script>
-
-
-<div class="profile-nav" type="button" onclick="menuToggle();">
-                    <%= image_tag current_user.avatar, class: "rounded-circle", style: "height: 22px; width: 24px; margin-top: 6px;"  if current_user.avatar.attached? %>
 </div>
+
                 </div>
                 <%# <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">New Post</a> %>
                 <%= render 'posts/new' %>
