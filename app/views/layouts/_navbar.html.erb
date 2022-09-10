@@ -17,11 +17,113 @@
       width: 100%;
       z-index: 3;
       height: 57px;
-  
+
     }
         .p-4 {
     padding: 0.5rem!important;
 }
+.action-nav {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+}
+
+.action-nav .profile-nav {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.action-nav .profile-nav .img-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action-nav .menu_nav {
+  position: absolute;
+  top: 120px;
+  right: 413px;
+  padding: 10px 20px;
+  background: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.action-nav .menu_nav.active {
+  top: 49px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.action-nav .menu_nav::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 28px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.action-nav .menu_nav .h3-nav {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.5em;
+}
+
+.action-nav .menu_nav .h3-nav .span-nav {
+  font-size: 14px;
+  color: #cecece;
+  font-weight: 300;
+}
+
+.action-nav .menu_nav .ul-nav .li-nav {
+  list-style: none;
+  padding: 16px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.action-nav .menu_nav .ul-nav .li-nav .img-nav {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.action-nav .menu_nav .ul-nav .li-nav:hover .img-nav {
+  opacity: 1;
+}
+
+.action-nav .menu_nav .ul-nav .li-nav .a-nav {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.action-nav .menu_nav .ul-nav .li-nav:hover .a-nav {
+  color: #ff5d94;
+}
+
   </style>
   <!-- Container wrapper -->
   <div class="container-fluid">
@@ -90,9 +192,38 @@
                     loading="lazy" />
                 </a> %>
                 <div>
-                      <%= link_to profile_path(current_user.username), class:"nav-link ", type:"button" do %>
-                    <%= image_tag current_user.avatar, class: "rounded-circle", style: "height: 22px; width: 24px;"  if current_user.avatar.attached? %>
-                  <% end %>
+
+
+
+
+<div class="action-nav">
+  <div class="menu_nav">
+	<ul class="ul-nav">
+	  <li class="li-nav">
+    <%= link_to "My Profile", profile_path(current_user),  class:"a-nav" %>
+	  </li>
+	  <li class="li-nav">
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "a-nav" %>
+	  </li>
+	  <li class="li-nav">
+        <%= button_to "Logout", destroy_user_session_path, method: :get,
+              class: "a-nav" %>
+	  </li>
+
+	</ul>
+  </div>
+</div>
+<script>
+  function menuToggle() {
+	const toggleMenu = document.querySelector(".menu_nav");
+	toggleMenu.classList.toggle("active");
+  }
+</script>
+
+
+<div class="profile-nav" type="button" onclick="menuToggle();">
+                    <%= image_tag current_user.avatar, class: "rounded-circle", style: "height: 22px; width: 24px; margin-top: 6px;"  if current_user.avatar.attached? %>
+</div>
                 </div>
                 <%# <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">New Post</a> %>
                 <%= render 'posts/new' %>
