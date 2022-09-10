@@ -16,6 +16,7 @@ color: blue;
 }
 </style>
 <br />
+<p>
 <%= render 'profile/follower_count', user: user %>
-<div><%= user.followees.count %> following</div>
+<%= user.followees.count %> following</p>
 
