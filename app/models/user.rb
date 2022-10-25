@@ -64,7 +64,7 @@ has_many :following_users,
 
 has_many :followers, through: :following_users, dependent: :destroy
 
-  after_commit :add_default_avatar, on: %i[create update]
+  after_commit :add_default_avatar
 
   def avatar_thumbnail
     avatar
